@@ -1,3 +1,5 @@
+Aabandoned qt4 project. Let's see if we can convert it to qt6
+
 EasyPaint
 =========
 
