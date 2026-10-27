@@ -4,12 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4) {
-    QT += widgets printsupport
-    DEFINES += HAVE_QT5
-}
+QT       += core gui widgets printsupport
 
 TARGET = easypaint
 VERSION = 0.1.1
@@ -123,7 +118,7 @@ isEmpty(QMAKE_LRELEASE) {
  win32 {
   QMAKE_LRELEASE =   $$[QT_INSTALL_BINS]\\lrelease.exe
 }
-else:QMAKE_LRELEASE =  $$[QT_INSTALL_BINS]/lrelease-qt4
+else:QMAKE_LRELEASE =  $$[QT_INSTALL_BINS]/lrelease
 }
 isEmpty(TS_DIR) {
  TS_DIR =  translations

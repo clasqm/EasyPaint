@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.5)
 
 # set project's name
 set (PROJECT easypaint)
@@ -116,11 +116,10 @@ project (${PROJECT})
 
 include_directories (./)
 
-find_package (Qt4 REQUIRED)
-include (${QT_USE_FILE})
-qt4_add_resources (QRC_SOURCES ${RESOURCES})
-qt4_wrap_cpp (MOC_SOURCES ${HEADERS})
-qt4_add_translation( TRANSLATIONS_QM ${TRANSLATIONS} )
+find_package (Qt5 REQUIRED COMPONENTS Core Gui Widgets PrintSupport LinguistTools)
+qt5_add_resources (QRC_SOURCES ${RESOURCES})
+qt5_wrap_cpp (MOC_SOURCES ${HEADERS})
+qt5_add_translation( TRANSLATIONS_QM ${TRANSLATIONS} )
 
 add_definitions (-Wall)
 
@@ -132,7 +131,7 @@ source_group ("Resource Files" FILES ${QRC_SOURCES})
 #-------  build executable from sources ----------
 add_executable (${PROJECT} ${HEADERS} ${SOURCES} ${MOC_SOURCES} ${QRC_SOURCES} ${TRANSLATIONS_QM})
 
-target_link_libraries (${PROJECT} ${QT_LIBRARIES})
+target_link_libraries (${PROJECT} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport)
 
 #-------  installing ----------
 if(UNIX AND NOT APPLE)
